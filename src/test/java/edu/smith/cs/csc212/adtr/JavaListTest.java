@@ -109,8 +109,45 @@ public class JavaListTest {
 		Assert.assertEquals("1", data.getIndex(0));
 	}
 	
-	// TODO: test list remove
-	// TODO test addIndex methods.
+	@Test
+	public void testSetIndex()
+	{
+		ListADT<String> data = makeFullList();
+		data.setIndex(1, "e");
+		assertEquals("e", data.getIndex(1));
+	}
+	
+	@Test
+	public void testRemoveIndex()
+	{
+		ListADT<String> data = makeFullList();
+		data.removeIndex(1);
+		assertEquals("c", data.getIndex(1));
+	}
+	
+	@Test
+	public void testRemoveBack()
+	{
+		ListADT<String> data = makeFullList();
+		data.removeBack();
+		assertEquals("c", data.getIndex(data.size()-1));
+	}
+	
+	@Test
+	public void testRemoveFront()
+	{
+		ListADT<String> data = makeFullList();
+		data.removeFront();
+		assertEquals("b", data.getIndex(0));
+	}
+	
+	@Test
+	public void testAddIndex()
+	{
+		ListADT<String> data = makeFullList();
+		data.addIndex(1, "e");
+		assertEquals("e", data.getIndex(1));
+	}
 	
 	@Test
 	public void testGetFront() {
@@ -172,10 +209,9 @@ public class JavaListTest {
 		data.addIndex(-1, "the");
 	}
 	
-	// TODO write some tests for setIndex.
-	
 	@Test
-	public void testToJava() {
-		assertEquals(makeFullList().toJava(), Arrays.asList("a", "b", "d", "d"));
+	public void testToJava() 
+	{
+		assertEquals(makeFullList().toJava(), Arrays.asList("a", "b", "c", "d"));
 	}
 }
